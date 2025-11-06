@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Detection Result</h2>
+
+{% if mode == 'symptom' %}
+  <h3>Input Symptoms</h3>
+  <ul>{% for s in input_data %}<li>{{ s }}</li>{% endfor %}</ul>
+{% elif mode == 'facial' %}
+  <h3>Analyzed Image</h3>
+  {% if image_url %}
+    <img src="{{ image_url }}" alt="uploaded face" style="max-width:300px;">
+  {% endif %}
+  <div style="margin-top: 20px; font-size: 16px; font-weight: bold; color: red;">
+    (Consult with a doctor — facial recognition is not an actual diagnostic detector.)
+  </div>
+{% elif mode == 'sensor' %}
+  <h3>Input Vitals</h3>
+  <ul>
+    <li>Heart Rate: {{ input_data.heart_rate }}</li>
+    <li>Temperature: {{ input_data.temperature }}</li>
+    <li>Oxygen: {{ input_data.oxygen }}</li>
+  </ul>
+{% endif %}
+
+<h3>Top Suggestions</h3>
+{% if results %}
+  <ol>
+  {% for r in results %}
+    <li>
+      <strong>{{ r.syndrome }}</strong>
+      {% if r.confidence %} — Confidence: {{ r.confidence }}%{% endif %}
+      {% if r.genetic_cause %}<br><em>Genetic cause:</em> {{ r.genetic_cause }}{% endif %}
+      {% if r.rationale %}<br><em>Rationale:</em> {{ r.rationale }}{% endif %}
+      {% if r.symptoms %}
+        <br><em>Noted symptoms in database:</em> {{ r.symptoms|join(', ') }}
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ol>
+{% else %}
+  <p>No suggestions found. Try different inputs.</p>
+{% endif %}
+
+{% if mode == 'facial' %}
+<div style="margin-top: 20px; font-size: 16px; font-weight: bold; color: red; text-align: center;">
+  ⚠️ (Consult with a doctor — facial recognition is not an actual diagnostic detector.)
+</div>
+{% endif %}
+
+
+<p><a href="{{ url_for('index') }}">Back to Home</a></p>
+{% endblock %}
+

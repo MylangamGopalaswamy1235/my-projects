@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Symptom-based Detection</h2>
+<form method="post">
+  <p>Select symptoms (multiple):</p>
+  <div class="symptom-grid">
+    {% for s in symptoms %}
+      <label><input type="checkbox" name="symptom" value="{{ s }}">{{ s }}</label><br>
+    {% endfor %}
+  </div>
+  <button type="submit">Detect Syndrome</button>
+</form>
+{% endblock %}
