@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Facial-feature Detection</h2>
+<p>Upload a clear front-facing photo (jpg/png). This demo extracts landmarks and uses simple heuristics.</p>
+<form method="post" enctype="multipart/form-data">
+  <input type="file" name="face_image" accept="image/*" required>
+  <button type="submit">Analyze Face</button>
+</form>
+{% endblock %}

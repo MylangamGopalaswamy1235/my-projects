@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SyndraScan</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header>
+    <h1><a href="{{ url_for('index') }}">SyndraScan</a></h1>
+    <nav>
+      <a href="{{ url_for('detect') }}">Symptom Detector</a> |
+      <a href="{{ url_for('detect_facial') }}">Facial Detector</a> |
+      <a href="{{ url_for('detect_sensor') }}">Sensor Detector</a> |
+      <a href="{{ url_for('library') }}">Syndrome Library</a>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    <small>Prototype demo — not a medical diagnostic tool.</small>
+  </footer>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

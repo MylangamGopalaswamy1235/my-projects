@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Syndrome Library - SyndraScan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f4f7fb;
+      font-family: 'Poppins', sans-serif;
+      padding-top: 40px;
+    }
+    table {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+    }
+    td {
+      vertical-align: middle;
+      text-align: center;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📚 Syndrome Library</h1>
+    <p class="text-center text-muted mb-4">Browse the list of syndromes and their associated symptoms</p>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Syndrome</th>
+            {% for i in range(1, 11) %}
+              <th>Symptom {{ i }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for _, row in df.iterrows() %}
+          <tr>
+            <td>{{ row['S.No'] }}</td>
+            <td>{{ row['Syndrome'] }}</td>
+            {% for i in range(1, 11) %}
+              <td>{{ row['Symptom ' + i|string] }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="{{ url_for('index') }}" class="btn btn-secondary">⬅ Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>
