@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/tab_notes" android:title="Notes" android:icon="@android:drawable/ic_menu_edit"/>
+    <item android:id="@+id/tab_map" android:title="Knowledge Map" android:icon="@android:drawable/ic_menu_myplaces"/>
+    <item android:id="@+id/tab_todo" android:title="To-Do" android:icon="@android:drawable/ic_menu_agenda"/>
+    <item android:id="@+id/tab_ai" android:title="AI Assistant" android:icon="@android:drawable/ic_menu_search"/>
+    <item android:id="@+id/tab_insights" android:title="Insights" android:icon="@android:drawable/ic_menu_info_details"/>
+</menu>
